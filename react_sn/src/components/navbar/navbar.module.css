@@ -1,3 +1,8 @@
-.Navbar {
-    color: red
+.item a {
+    color: black;
+    text-decoration: none;
+}
+
+.item a.activeLink {
+    color: white;
 }
