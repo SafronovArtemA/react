@@ -1,20 +1,28 @@
 import UserMessage from './user_message/user_message';
 import TextMessage from './text_message/text_message';
 import css from './messages.module.css';
+import React from 'react'
 
+function Messages(props) {
 
-function Messages() {
+    let userElements = props.messages.users.map(user => <UserMessage name={user.name} id={user.id}/>)
+    let messageElements = props.messages.messages.map(message => <TextMessage message={message.message}/>)
+
+    let newMessage = React.createRef()
+    let addMessage = () => {
+        let message = newMessage.current.value;
+        alert(message)
+    }
+
     return (
         <div className={css.messages}>
             <div>
-                <UserMessage name="Ivan" id="1"/>
-                <UserMessage name="Petr" id="2"/>
-                <UserMessage name="Alex" id="3"/>
+                { userElements }
             </div>
             <div>
-                <TextMessage message="Hey"/>
-                <TextMessage message="Hello"/>
-                <TextMessage message="Welcome"/>
+                { messageElements }
+                <textarea ref={newMessage}></textarea>
+                <button onClick={addMessage}>add</button>
             </div>
         </div>
     );

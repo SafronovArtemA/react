@@ -1,19 +1,18 @@
 import css from './profile.module.css'
 import Post from './posts/posts'
+import NewPost from './new_posts/new_posts'
+import PersonalProfile from './personal/personal'
 
-function Profile() {
+function Profile(props) {
+
+    let postElements = props.profile.posts.map(post => <Post text={post.text} likes={post.like} />)
+
     return (
-        <div>
-            <div className={css.new_post}>
-            <div>New post</div>
-            <textarea></textarea>
-            <button>Add</button>
-            </div>
-            <div className={css.profile}>
-                <div>My posts</div>
-                <Post text='Hello' likes="30" />
-                <Post text='Bye' likes="50" />
-            </div>
+        <div className={css.profile}>
+            <PersonalProfile />
+            <NewPost addPost={props.addPost} />
+            <div>My posts</div>
+            { postElements }
         </ div>
     )
 }
