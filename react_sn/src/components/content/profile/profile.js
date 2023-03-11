@@ -10,7 +10,7 @@ function Profile(props) {
     return (
         <div className={css.profile}>
             <PersonalProfile />
-            <NewPost addPost={props.addPost} />
+            <NewPost dispatch={props.dispatch} newPostText={props.profile.newPostText} />
             <div>My posts</div>
             { postElements }
         </ div>

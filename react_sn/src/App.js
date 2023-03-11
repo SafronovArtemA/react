@@ -13,7 +13,8 @@ function App(props) {
             <Navbar />
             <div  className="content">
                 <Routes>
-                    <Route path="/profile" element={<Profile profile={props.state.profilePage} addPost={props.addPost} />} />
+                    <Route path="/profile" element={<Profile profile={props.state.profilePage}
+                    dispatch={props.dispatch}/>} />
                     <Route path="/messages" element={<Messages messages={props.state.messagesPage} />} />
                 </Routes>
             </div>

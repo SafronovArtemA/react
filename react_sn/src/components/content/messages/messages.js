@@ -21,7 +21,7 @@ function Messages(props) {
             </div>
             <div>
                 { messageElements }
-                <textarea ref={newMessage}></textarea>
+                <textarea ref={newMessage}/>
                 <button onClick={addMessage}>add</button>
             </div>
         </div>
