@@ -3,21 +3,19 @@ import {addPostActionCreator, updateNewPostActionCreator} from '../../../../redu
 
 function newPost(props) {
 
-    let newPostElement = React.createRef()
-
     let addPost = () => {
         props.dispatch(addPostActionCreator())
     }
 
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
+    let onPostChange = (e) => {
+        let text = e.target.value;
         props.dispatch(updateNewPostActionCreator(text))
     }
 
     return (
         <div>
         <div>New post</div>
-        <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}/>
+        <textarea onChange={onPostChange} value={props.newPostText}/>
         <button onClick={addPost}>Add</button>
         </div>
     )

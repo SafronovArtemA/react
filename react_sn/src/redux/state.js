@@ -18,6 +18,7 @@ let store = {
                 {id: 2, message: 'Hello'},
                 {id: 3, message: 'Welcome'},
             ],
+            newMessageText: '',
         },
     },
     _rerenderEntireTree() {
@@ -59,26 +60,28 @@ let store = {
             this._rerenderEntireTree(this._state)
             this._state.profilePage.newPostText = ''
         } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
-        this._state.profilePage.newPostText = action.text
-        this._rerenderEntireTree(this._state)
+            this._state.profilePage.newPostText = action.text
+            this._rerenderEntireTree(this._state)
+        } else if (action.type === 'SEND_NEW_MESSAGE') {
+            let newMessage = {
+                id: 4,
+                message: this._state.messagesPage.newMessageText,
+            }
+            this._state.messagesPage.messages.push(newMessage)
+            this._state.messagesPage.newMessageText = ''
+            this._rerenderEntireTree(this._state)
+        } else if (action.type === 'UPDATE_NEW_MESSAGE_TEXT') {
+            this._state.messagesPage.newMessageText = action.text
+            this._rerenderEntireTree(this._state)
         }
     },
 }
 
 
-export const addPostActionCreator = () => {
-    return {
-        type: 'ADD_POST'
-    }
-}
-
-
-export const updateNewPostActionCreator = (text) => {
-    return {
-        type: 'UPDATE_NEW_POST_TEXT',
-        text: text
-    }
-}
+export const addPostActionCreator = () => ({ type: 'ADD_POST' })
+export const updateNewPostActionCreator = (text) => ({ type: 'UPDATE_NEW_POST_TEXT', text: text })
+export const sendMessageCreator = () => ({ type: 'SEND_NEW_MESSAGE' })
+export const updateNewMessageBodyCreator = (text) => ({ type: 'UPDATE_NEW_MESSAGE_TEXT', text: text })
 
 
 export default store;
