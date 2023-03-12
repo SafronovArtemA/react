@@ -2,7 +2,21 @@ const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE'
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
 
 
-const messagesReducer = (state, action) => {
+const initialState = {
+            users: [
+                {id: 1, name: 'Ivan'},
+                {id: 2, name: 'Petr'},
+                {id: 3, name: 'Alex'},
+            ],
+            messages: [
+                {id: 1, message: 'Hey'},
+                {id: 2, message: 'Hello'},
+                {id: 3, message: 'Welcome'},
+            ],
+            newMessageText: '',
+        }
+
+const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_NEW_MESSAGE:
             let newMessage = {
