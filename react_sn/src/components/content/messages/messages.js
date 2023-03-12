@@ -2,7 +2,7 @@ import UserMessage from './user_message/user_message';
 import TextMessage from './text_message/text_message';
 import css from './messages.module.css';
 import React from 'react'
-import {sendMessageCreator, updateNewMessageBodyCreator} from '../../../redux/state'
+import {sendMessageCreator, updateNewMessageBodyCreator} from '../../../redux/messages-reducer'
 
 
 function Messages(props) {
