@@ -2,7 +2,6 @@ import UserMessage from './user_message/user_message';
 import TextMessage from './text_message/text_message';
 import css from './messages.module.css';
 import React from 'react'
-import {sendMessageCreator, updateNewMessageBodyCreator} from '../../../redux/messages-reducer'
 
 
 function Messages(props) {
@@ -12,11 +11,11 @@ function Messages(props) {
 
     let onMessageChange = (e) => {
         let text = e.target.value
-        props.dispatch(updateNewMessageBodyCreator(text))
+        props.messageChange(text)
     }
 
     let onSendMessageClick = () => {
-        props.dispatch(sendMessageCreator())
+        props.sendMessageClick()
     }
 
 
